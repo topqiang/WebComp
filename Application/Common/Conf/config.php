@@ -8,11 +8,5 @@ return array(
     'DB_PWD'                =>  '123456',          // 密码
     'DB_PORT'               =>  '3306',        // 端口
     'DB_PREFIX'             =>  'top_',    // 数据库表前缀
-    'MODULE_ALLOW_LIST'      =>  array('Home','Admin'),
-    'TMPL_PARSE_STRING' => array(
-		'__STATIC__' => __ROOT__ . '/Public/Static',
-		'__PLUGINS__' => __ROOT__ . '/Public/Plugins',
-		'__IMG__'    => __ROOT__ . '/Public/img',
-		'__CSS__'    => __ROOT__ . '/Public/css',
-		'__JS__'     => __ROOT__ . '/Public/js',
-	),);
+    'MODULE_ALLOW_LIST'      =>  array('Home','Admin')
+);
