@@ -25,7 +25,7 @@
             <!--菜单 start-->
             <ul id="main-nav">
                 <li>
-                    <a class="nav-top-item">导航管理</a>
+                    <a class="nav-top-item current">导航管理</a>
                     <ul>
                         <li><a href="{:U('Nav/navList')}" target="main">导航列表</a></li>
                     </ul>
@@ -37,27 +37,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="nav-top-item">商家管理</a>
+                    <a href="#" class="nav-top-item">公司管理</a>
                     <ul>
-                        <li><a href="{:U('Shop/shoplist')}" target="main">商家列表</a></li>
+                        <li><a href="{:U('Company/companylist')}" target="main">公司列表</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#" class="nav-top-item">业务管理</a>
-                    <ul>
-                        <li><a href="{:U('Shop/manapic')}" target="main">门店轮播</a></li>
-                    </ul>
-                </li>
-				<li>
-					<a href="#" class="nav-top-item">用户管理</a>
-					<ul>
-                        <if condition="$_SESSION['g_id'] neq 3">
-						<li>
-                            <a href="{:U('User/userlist')}" target="main">用户列表</a>
-                        </li>
-                        </if>
-					</ul>
-				</li>
 				<li>
 					<a href="#" class="nav-top-item">管&nbsp;理&nbsp;员</a>
 					<ul>
@@ -78,12 +62,12 @@
                         <li><a href="{:U('WeiXinArticle/backType',array('back_type'=>'noneBack'))}" target="main">空回答回复</a></li>
                     </ul>
                 </li>
-                <!-- <li>
+                <li>
                     <a href="#" class="nav-top-item">文章管理</a>
                     <ul>
                         <li><a href="{:U('Article/articleList')}" target="main">文章列表</a></li>
                     </ul>
-                </li> -->
+                </li>
                 <else/>
                 </if>
             </ul>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/expand.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/facebox.js"></script>
+    <!--<script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery.wysiwyg.js"></script>-->
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/trivial.jquery.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="http://kindeditor.net/ke4/kindeditor-min.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Common/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Common/js/kindeditor.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/ajax_operate.js"></script>
+</head>
+<body>
+<!--主页面-->
+<div id="main-content">
+    <div class="content-box">
+        <!--头部切换-->
+        <div class="content-box-header">
+            <h3>添加公司</h3>
+            <ul class="content-box-tabs">
+                <li><a href="{:U('Company/companyList')}">列表</a></li>
+                <li><a class="current">新增</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <!--表格内容-->
+        <div class="content-box-content">
+            <!--表单 start-->
+            <div class="tab-content form default-tab">
+                <form action="{:U('Company/addCompany')}" method="post" class="form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p>
+                            <span class="label">公司名：</span>
+                            <input class="text-input medium-input datepicker" type="text" name="name"/>
+                        </p>
+                        <p>
+                            <label>公司logo</label>
+                            <img src="__WEBROOT__/{$info.icon}" width="100" height="100"/>
+                            <input type="file" name="logo" accept="image/*"/>
+                        </p>
+                        <p>
+                            <span class="label">公司介绍：</span>
+                            <textarea id="text-content" name="desc" style="width:300px;height:300px;visibility:hidden;"></textarea>
+                            <br>
+                            <span style="color: red">注意传图不要太大</span>
+                        </p>
+                        <p>
+                            <label>产品选型</label>
+                            <label>无pdf<input type="checkbox" class="haspdf" name="haspdf"></label>
+                            <input class="profile" type="file" name="profile" accept="application/pdf">
+                            <input class="disn profile" type="text" name="protype">
+                        </p>
+                        <p>
+                            <label>所属分类</label>
+                            <select name="cate_id">
+                                <volist name="list" id="nav">
+                                    <option value="{$nav['id']}">{$nav['name']}</option>
+                                </volist>
+                            </select>
+                        </p>
+                        <p>
+                            <label>产品视频</label>
+                            <input type="file" name="videosrc" accept="video/mp4">
+                        </p>
+                        <p>
+                            <label>联系电话</label>
+                            <input type="text" name="tel">
+                        </p>
+                        <p>
+                            <label>店铺链接</label>
+                            <input type="text" name="shoplink">
+                        </p>
+                        <p>
+                            <input class="button add-btn" type="submit" value="添　加" />
+                        </p>
+                    </fieldset>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <!--表单 end-->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+
+function ajax(){
+    var filesize = this.files[0].size;
+    if (filesize > 500*1024) {
+        alert("请上传大小在500k以下的图片");
+        return false;
+    };
+    var self = $(this);
+    var files = this.files;
+    var reader = new FileReader();
+    reader.onload = function(e){
+        var src = e.target.result;
+        self.prev().attr("src",src);
+    }
+    reader.readAsDataURL(files[0]);
+}
+$("input[type='file']").on('change',ajax);
+
+$(".haspdf").on('change',function(){
+    $(".profile").toggle();
+});
+</script>
+</html>
