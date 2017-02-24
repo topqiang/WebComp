@@ -21,37 +21,61 @@
 <!--主页面-->
 <div id="main-content">
     <div class="content-box">
-        <!--提示-->
-        <div class="notification success png_bg" style="display:none">
-            <div></div>
-        </div>
-        <div class="notification error png_bg n-error" style="display:none">
-            <div></div>
-        </div>
         <!--头部切换-->
         <div class="content-box-header">
-            <h3>文章编辑</h3>
-            <ul class="content-box-tabs">
-            </ul>
+            <h3>公司信息编辑</h3>
             <div class="clear"></div>
         </div>
         <!--表格内容-->
         <div class="content-box-content">
             <!--表单 start-->
             <div class="tab-content default-tab" id="tab1">
-                <form action="{:U('Article/editArticle')}" method="post" class="form">
-                    <input type="hidden" name="art_id" value="{$art_info['art_id']}">
+                <form action="{:U('Company/editCompany')}" method="post" class="form" enctype="multipart/form-data">
                     <fieldset>
                         <p>
-                            <span class="label">标题：</span>
-                            <input class="text-input medium-input datepicker" type="text" name="art_title" value="{$art_info['art_title']}"/>
+                            <input type="hidden" name="id" value="{$cominfo.id}"/>
+                            <span class="label">公司名：</span>
+                            <input class="text-input medium-input" type="text" name="name" value="{$cominfo['name']}"/>
                         </p>
                         <p>
-                            <span class="label">内容：</span>
-                            <textarea id="text-content" name="art_content" style="width:300px;height:300px;visibility:hidden;">{$art_info['art_content']}</textarea>
+                            <label>公司logo</label>
+                            <img src="__WEBROOT__/Uploads/{$cominfo.logo}" width="100" height="100"/>
+                            <input type="file" name="logo" accept="image/*"/>
                         </p>
                         <p>
-                            <input class="button add-btn" type="submit" value="保　存" />
+                            <span class="label">公司介绍：</span>
+                            <textarea id="text-content" name="desc" style="width:300px;height:300px;visibility:hidden;">{$cominfo['desc']}</textarea>
+                            <br>
+                            <span style="color: red">注意传图不要太大</span>
+                        </p>
+                        <p>
+                            <label>产品选型</label>
+                            <label>无pdf<input type="checkbox" class="haspdf" name="haspdf"></label>
+                            <input class="profile" type="file" name="profile" accept="application/pdf">
+                            <input class="disn profile" type="text" name="protype">
+                        </p>
+                        <p>
+                            <label>所属分类</label>
+                            <select name="cate_id">
+                                <volist name="list" id="nav">
+                                    <option value="{$nav['id']}" <if condition="$cominfo['cate_id'] eq $nav['id']">checked</if>>{$nav['name']}</option>
+                                </volist>
+                            </select>
+                        </p>
+                        <p>
+                            <label>产品视频</label>
+                            <input type="file" name="videosrc" accept="video/mp4">
+                        </p>
+                        <p>
+                            <label>联系电话</label>
+                            <input type="text" name="tel" value="{$cominfo.tel}">
+                        </p>
+                        <p>
+                            <label>店铺链接</label>
+                            <input type="text" name="shoplink" value="{$cominfo.shoplink}">
+                        </p>
+                        <p>
+                            <input class="button add-btn" type="submit" value="添　加" />
                         </p>
                     </fieldset>
                     <div class="clear"></div>
@@ -63,13 +87,9 @@
 </div>
 </body>
 <script type="text/javascript">
-    $(document).ready(function(){
-        //删除类型
-        $('.del').click(function(){
-            if(confirm('确定要删除吗')){
-                window.location.href = $(this).next('input').val();
-            }
-        });
+    $(".haspdf").on('change',function(){
+        $(".profile").toggle();
     });
+
 </script>
 </html>

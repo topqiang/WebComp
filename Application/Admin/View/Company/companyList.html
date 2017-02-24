@@ -52,7 +52,7 @@
                                         {$art['name']}
                                     </td>
                                     <td>
-                                        <img src="{$art['logo']}"/>
+                                        <img src="__ROOT__/Uploads/{$art['logo']}"/>
                                     </td>
                                     <td>
                                         {$art['desc']}
@@ -73,12 +73,12 @@
                                         {$art['shoplink']}
                                     </td>
                                     <td>
-                                        <a href="{:U('Article/editArticle',array('art_id'=>$art['art_id']))}" title="编辑">
+                                        <a href="{:U('Company/editCompany',array('id'=>$art['id']))}" title="编辑">
                                             <img src="__WEBPUBLIC__/Admin/images/icons/pencil.png" width="16" height="18" alt="编辑" />
                                         </a>&nbsp;
-                                        <a href="###" class="del" title="删除">
+                                        <a href="{:U('Company/delCompany',array('id'=>$art['id']))}" class="del" title="删除">
                                             <img src="__WEBPUBLIC__/Admin/images/icons/cross.png" alt="删除" />
-                                        </a><input type="hidden" value="{:U('Article/delArticle',array('art_id'=>$art['art_id']))}">
+                                        </a>
                                     </td>
                                 </tr>
                             </volist>
@@ -108,12 +108,7 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function(){
-        //删除类型
-        $('.del').click(function(){
-            if(confirm('确定要删除吗')){
-                window.location.href = $(this).next('input').val();
-            }
-        });
+        
     });
 </script>
 </html>

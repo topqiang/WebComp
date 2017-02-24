@@ -31,7 +31,6 @@ class CompanyController extends Controller{
 			$res=$this ->cate -> where($where) -> select();
 			$this->assign('list',$res);
     		$this -> display('addCompany');
-    		exit();
     	}else{
 	        if(empty($_POST['name']) || empty($_POST['desc'])){
 	            $this->error('公司名和描述不能为空');
@@ -78,33 +77,65 @@ class CompanyController extends Controller{
     /**
      * 编辑菜单
      */
-    public function editArticle(){
+    public function editCompany(){
         if(empty($_POST)){
-            $art_info = $this->article->findArticle(array('art_id'=>$_GET['art_id']));
-            $this->assign('art_info',$art_info);
-            $this->display('editArticle');
+        	$where['status'] = array('neq' , '9');
+			$res=$this ->cate -> where($where) -> select();
+			$this->assign('list',$res);
+            $cominfo = $this->cateCompany->where(array('id'=>$_GET['id'],'stauts'=>array('neq',9)))->select();
+            $this->assign('cominfo',$cominfo[0]);
+            $this->display('editCompany');
         }else{
-            if(empty($_POST['art_title']) || empty($_POST['art_content'])){
-                $this->error('您未填写文章标题或内容');
-            }
-            $where['art_id'] = $_POST['art_id'];
-            $data['art_title'] = $_POST['art_title'];
-            $data['art_content'] = $_POST['art_content'];
-            $result = $this->article->editArticle($where,$data);
-            if($result){
-                $this->success('修改成功');
-            }else{
-                $this->error('修改失败');
-            }
+            if(empty($_POST['name']) || empty($_POST['desc'])){
+	            $this->error('公司名和描述不能为空');
+	        }
+	        $data['name'] = $_POST['name'];
+	        $data['desc'] = $_POST['desc'];
+	        if (!empty($_FILES['logo'])) {
+	        	$res = $this -> upload('logo','logo');
+	        	if ($res != 'error') {
+	        		$data['logo'] = $res;
+	        	}else{
+
+	        	}
+	        }
+	        if (!empty($_FILES['profile'])) {
+	        	$res = $this -> upload('profile','pdf');
+	        	if ($res != 'error') {
+	        		$data['protype'] = $res;
+	        	}
+	        }else{
+        		$data['protype'] = $_POST['protype'];
+        	}
+	        if (!empty($_FILES['videosrc'])) {
+	        	$res = $this -> upload('videosrc','mp4');
+	        	if ($res != 'error') {
+	        		$data['videosrc'] = $res;
+	        	}else{
+	        		
+	        	}
+	        }
+	        $data['id'] = $_POST['id'];
+	        $data['tel'] = $_POST['tel'];
+	        $data['cate_id'] = $_POST['cate_id'];
+	        $data['shoplink'] = $_POST['shoplink'];
+	        $data['c_time'] = time();
+	        $data['u_time'] = time();
+	        $result = $this->company->save($data);
+	        if($result){
+	            $this->success('修改成功','Company/companyList');
+	        }else{
+	            $this->error('修改失败');
+	        }
         }
     }
     /**
-     * 删除菜单
+     * 删除公司
      */
-    public function delArticle(){
-        $where['art_id'] = $_GET['art_id'];
-        $result = $this->article->deleteArticle($where);
-        if($result){
+    public function delCompany(){
+        if(empty($_GET['id']))$this->error('没有公司id');
+		$res=$this->company->save(array('id'=>$_GET['id'],'status'=>"9"));
+        if(!empty($res)){
             $this->success('删除成功');
         }else{
             $this->error('删除失败');
