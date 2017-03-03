@@ -63,6 +63,10 @@
                             </select>
                         </p>
                         <p>
+                            <label>官网</label>
+                            <input type="text" name="url" value="{$cominfo.url}">
+                        </p>
+                        <p>
                             <label>产品视频</label>
                             <input type="file" name="videosrc" accept="video/mp4">
                         </p>
@@ -91,5 +95,21 @@
         $(".profile").toggle();
     });
 
+    function ajax(){
+        var filesize = this.files[0].size;
+        if (filesize > 500*1024) {
+            alert("请上传大小在500k以下的图片");
+            return false;
+        };
+        var self = $(this);
+        var files = this.files;
+        var reader = new FileReader();
+        reader.onload = function(e){
+            var src = e.target.result;
+            self.prev().attr("src",src);
+        }
+        reader.readAsDataURL(files[0]);
+    }
+    $("input[type='file']").on('change',ajax);
 </script>
 </html>

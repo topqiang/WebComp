@@ -39,10 +39,11 @@
 								<input class="check-all" type="checkbox" />
 								ID
 							</th>
-							<th width="20%">商品名称</th>
+							<th width="15%">商品名称</th>
+							<th width="15%">英文名称</th>
 							<th width="20%">缩略图</th>
 							<th width="20%">生成时间</th>
-							<th width="20%">修改时间</th>
+							<th width="10%">修改时间</th>
 							<th width="10%">操作</th>
 						</tr>
 						</thead>
@@ -59,6 +60,9 @@
 								</td>
 								<td>
 									{$vo.name}
+								</td>
+								<td>
+									{$vo.engname}
 								</td>
 								<td><img src="__WEBROOT__/{$vo.icon}" height="30" /></td>
 								<td>{$vo.c_time|date="y-m-d H:m:i",###}</td>

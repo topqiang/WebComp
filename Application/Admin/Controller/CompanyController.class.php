@@ -61,6 +61,7 @@ class CompanyController extends Controller{
 	        		
 	        	}
 	        }
+	        $data['url'] = $_POST['url'];
 	        $data['tel'] = $_POST['tel'];
 	        $data['cate_id'] = $_POST['cate_id'];
 	        $data['shoplink'] = $_POST['shoplink'];
@@ -115,6 +116,7 @@ class CompanyController extends Controller{
 	        		
 	        	}
 	        }
+	        $data['url'] = $_POST['url'];
 	        $data['id'] = $_POST['id'];
 	        $data['tel'] = $_POST['tel'];
 	        $data['cate_id'] = $_POST['cate_id'];

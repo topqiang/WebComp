@@ -1,0 +1,41 @@
+<extend name="Public/header"/>
+<block name="main">
+	<body class="body">
+		<div class="padding bar-header texcen ih30">
+			<div class="title colwhit">
+				中国流体设备网
+			</div>
+		</div>
+		<div class="content" style="padding: 50px 0px 0px;">
+			<div class="navlist">
+
+				<volist name="navlist" id="nav">
+					<div class="navitem" linkto="{:U('Home/Cate/catelist',array('id'=>$nav['id'],'navname'=>$nav['name']))}">
+						<div class="imgbag">
+							<img src="{$nav['icon']}"/>
+						</div>
+						<div class="navinfo">
+							<div>{$nav['name']}</div>
+							<span class="colgreen fs10">{$nav['engname']}</span>
+							<div class="colccc mat10 fs10">
+								<div>{$nav['catecount']}个类型</div>
+								<div>{$nav['compcount']}家供应商</div>
+							</div>
+						</div>
+					</div>
+				</volist>
+
+			</div>
+
+			<div class="colwhit ih40 texcen fs14">合作伙伴</div>
+
+			<div class="complist">
+				<volist name="complist" id="comp">
+					<a class="compitem" href="{$comp.url}" target="_blank">
+						<img src="Uploads/{$comp.logo}"/>
+					</a>
+				</volist>
+			</div>
+		</div>
+	</body>
+</block>

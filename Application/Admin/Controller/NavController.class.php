@@ -26,6 +26,7 @@ class NavController extends Controller{
 			//存储数据
 			$data=array(
 				'name'			=>$_POST['name'],
+				'engname'		=>$_POST['engname'],
 				'icon'			=>"Uploads/nav/".$upload_res['result'],
 				'c_time'	=>time(),
 				'u_time'	=>time(),
@@ -54,6 +55,7 @@ class NavController extends Controller{
 			$data=array(
 				'id'			=>$_GET['id'],
 				'name'			=>$_POST['name'],
+				'engname'		=>$_POST['engname'],
 				'u_time'	=>time()
 			);
 			if($upload_res['flag']=='success')$data['icon']="Uploads/nav/".$upload_res['result'];
@@ -65,6 +67,7 @@ class NavController extends Controller{
 			}
 		}
 	}
+	
 	public function navDel(){
 		if(empty($_GET['id']))$this->error('没有商品id');
 		

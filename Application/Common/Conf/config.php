@@ -127,7 +127,5 @@ return  array(
     //时间格式验证
     'TIME'                  => '/^(0\d{1}|1\d{1}|2[0-3]):([0-5]\d{1})$/',
     'NETURL'                => '/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/',
-    //api路径
-    'API_URL'               => 'http://weixin.genduanzi.com',
 );
 

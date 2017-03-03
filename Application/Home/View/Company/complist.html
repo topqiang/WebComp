@@ -1,0 +1,41 @@
+<extend name="Public/header"/>
+<block name="main">
+<body>
+	<div class="bar-header borb1c">
+		<div class="weui-cell">
+	        <div class="weui-cell__hd" linkto="javascript:history.go(-1)">
+	        	<img src="__IMG__/left.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+	        <div class="weui-cell__bd texcen">
+	            <p>{$_REQUEST['catename']}</p>
+	        </div>
+	    </div>
+	</div>
+	<div class="content" style="padding: 50px 20px 0px;">
+		
+		<div class="toplocal">
+			<span class="mybtn">{$_REQUEST['catename']}</span>
+			<div class="fs10 colccc">{$count}家供应商</div>
+		</div>
+
+		
+		<div class="weui-cells mat10">
+
+			<volist name="complist" id="comp">
+				<div class="weui-cell" linkto="{:U('Company/company',array('id' => $comp['id']))}">
+					<div class="weui-cell__hd">
+						<img class="complogo" src="Uploads/{$comp['logo']}">
+					</div>
+					<div class="weui-cell__bd">
+						{$comp['name']}
+					</div>
+					<div class="weui-cell__ft">
+						<img class="comprig" src="__IMG__/right.png">
+					</div>
+				</div>
+			</volist>
+		</div>
+		
+	</div>
+</body>
+</block>
+<block name="footer"></block>

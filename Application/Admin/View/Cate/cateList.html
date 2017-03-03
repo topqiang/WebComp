@@ -33,9 +33,10 @@
 								ID
 							</th>
 							<th width="20%">分类名称</th>
+							<th width="20%">图标</th>
 							<th width="20%">所属导航</th>
-							<th width="20%">创建时间</th>
-							<th width="20%">修改时间</th>
+							<th width="10%">创建时间</th>
+							<th width="10%">修改时间</th>
 							<th width="10%">操作</th>
 						</tr>
 						</thead>
@@ -48,6 +49,7 @@
 									{$vo.id}
 								</td>
 								<td>{$vo.name}</td>
+								<td><img src="__WEBROOT__/{$vo.logourl}" height="30" /></td>
 								<td>{$vo.nav_name}</td>
 								<td>{$vo.c_time|date="y-m-d H:m:i",###}</td>
 								<td>{$vo.u_time|date="y-m-d H:m:i",###}</td>

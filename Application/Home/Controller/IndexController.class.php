@@ -9,34 +9,24 @@ use Think\Controller;
 class IndexController extends BaseController {
     public function _initialize(){
     	parent::_initialize();
+
+        $this -> nav = D('Nav');
+        $this -> catecompany = D('Catecompany');
+        $this -> navcate = D('Navcate');
     	//完善购物车数量查询
     }
 
-    /**
-     * 系统首页
-     */
-    public function goodlist(){
-        $list = D("Toppic") -> select();
-        $this -> assign("piclist",$list);
-
-        $sid = 1;
-        session("sid",$sid);
-        $shop = M("Shop") -> where(array("id" => $sid)) -> find();
-        $where['sid'] = $sid;
-        $where['status'] = array('neq',9);
-        $res = M("Goods") -> where($where) -> select();
-        if ( isset($res) ) {
-            $this -> assign('shop',$shop);
-            $this -> assign('goods',$res);
+    public function index(){
+        $where['status'] = array('neq', 9);
+        $res = $this -> nav -> where($where) -> select();
+        foreach ($res as $key => $nav) {
+            $numcount = array('nav_id' => array('eq',$nav['id']));
+            $res[$key]['compcount'] = $this -> catecompany -> where($numcount) -> count();
+            $res[$key]['catecount'] = $this -> navcate -> where($numcount) -> count(); 
         }
+        $complist = $this -> catecompany-> field('id,logo,url') -> select();
+        $this -> assign('navlist',$res);
+        $this -> assign('complist',$complist);
         $this -> display();
-    }
-
-    public function result(){
-        $this -> display();
-    }
-
-    public function _empty(){
-        $this -> redirect("goodlist");
     }
 }

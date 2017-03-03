@@ -17,14 +17,19 @@
 		</div>
 		<div class="content-box-content">
 			<div class="tab-content default-tab">
-				<form action="{:U('Cate/cateEdit',array('id'=>$info['id']))}" method="post">
+				<form action="{:U('Cate/cateEdit',array('id'=>$info['id']))}" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<p>
 							<label>分类名称</label>
 							<input value="{$info.name}" class="text-input small-input" type="text" id="small-input" name="name" />
 						</p>
 						<p>
-							<label>备注信息</label>
+							<label>图标</label>
+							<img src="__WEBROOT__/{$info.logourl}" width="100" height="100"/>
+							<input type="file" name="pic"/>
+						</p>
+						<p>
+							<label>所属导航</label>
 							<select name="nav_id">
 								<volist name="list" id="nav">
 									<option value="{$nav['id']}" <if condition="$nav['id'] eq $info['nav_id']">checked</if> >{$nav['name']}</option>
@@ -42,4 +47,22 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript">
+	function ajax(){
+		var filesize = this.files[0].size;
+		if (filesize > 500*1024) {
+			alert("请上传大小在500k以下的图片");
+			return false;
+		};
+		var self = $(this);
+		var files = this.files;
+		var reader = new FileReader();
+		reader.onload = function(e){
+			var src = e.target.result;
+			self.prev().attr("src",src);
+		}
+		reader.readAsDataURL(files[0]);
+	}
+	$("input[type='file']").on('change',ajax);
+</script>
 </html>
