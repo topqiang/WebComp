@@ -38,5 +38,16 @@ class CompanyController extends BaseController{
 		}
 		$this -> display();
 	}
+
+	public function ourinfo(){
+		$type = $_GET['type'];
+		$id = $_GET['id'];
+
+		$res = $this -> catecompany -> field('id,name,'.$type) -> where(array('id'=>$id))->select();
+		if (isset($res)) {
+			$this -> assign('comp',$res[0]);
+		}
+		$this -> display();
+	}
 	
 }

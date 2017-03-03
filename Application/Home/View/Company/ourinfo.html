@@ -1,0 +1,31 @@
+<extend name="Public/header"/>
+<block name="headstyle">
+<link href="http://vjs.zencdn.net/5.16.0/video-js.css" rel="stylesheet">
+</block>
+<block name="main">
+<body>
+	<div class="bar-header borb1c">
+		<div class="weui-cell">
+	        <div class="weui-cell__hd" linkto="javascript:history.go(-1)">
+	        	<img src="__IMG__/left.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
+	        <div class="weui-cell__bd texcen">
+	            <p>{$comp.name}</p>
+	        </div>
+	    </div>
+	</div>
+	<div class="content" style="padding: 50px 20px 0px;">
+
+		<if condition="$_REQUEST['type'] eq 'videosrc'">
+			<video id="my-video" class="video-js mat50" controls preload="auto" style="width:100%;height:auto;">
+			    <source src="Uploads/{$comp.videosrc}" type='video/mp4'>
+			</video>
+			<else/>
+			{$comp['desc']}
+		</if>
+		
+	</div>
+</body>
+</block>
+<block name="footer">
+<script src="http://vjs.zencdn.net/5.16.0/video.js"></script>
+</block>

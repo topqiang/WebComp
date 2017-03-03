@@ -40,19 +40,19 @@
 
 		<div class="navdo">
 			
-			<div class="bgwhit">
+			<div class="bgwhit" linkto="{:U('Company/ourinfo',array('type'=>'desc','id'=>$comp['id']))}">
 				<div><img src="__IMG__/child1.png"></div>
 				<div>企业介绍</div>
 			</div>
-			<div class="bgwhit" <if condition="$comp['has_pdf'] eq 1">linkto="{:U('Company/pdf',array('pdf'=>$comp['protype']))}" </if>>
+			<div class="bgwhit" <if condition="$comp['has_pdf'] eq 1">linkto="{:U('Company/pdf',array('pdf'=>$comp['protype']))}" <else/> linkto="{:U('Company/ourinfo',array('type'=>'protype','id'=>$comp['id']))}" </if>>
 				<div><img src="__IMG__/child2.png"></div>
 				<div>产品选型</div>
 			</div>
-			<div class="bgwhit" linkto="Uploads/{$comp['videosrc']}">
+			<div class="bgwhit" linkto="{:U('Company/ourinfo',array('type'=>'videosrc','id'=>$comp['id']))}">
 				<div><img src="__IMG__/child3.png"></div>
 				<div>产品视频</div>
 			</div>
-			<div class="bgwhit">
+			<div class="disb bgwhit" linkto="tel:{$comp['tel']}">
 				<div><img src="__IMG__/child4.png"></div>
 				<div>联系我们</div>
 			</div>
