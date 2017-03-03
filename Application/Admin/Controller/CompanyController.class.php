@@ -122,7 +122,6 @@ class CompanyController extends Controller{
 	        $data['tel'] = $_POST['tel'];
 	        $data['cate_id'] = $_POST['cate_id'];
 	        $data['shoplink'] = $_POST['shoplink'];
-	        $data['c_time'] = time();
 	        $data['u_time'] = time();
 	        $result = $this->company->save($data);
 	        if($result){

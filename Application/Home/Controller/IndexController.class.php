@@ -11,6 +11,7 @@ class IndexController extends BaseController {
     	parent::_initialize();
 
         $this -> nav = D('Nav');
+        $this -> lnav = D('Lnav');
         $this -> catecompany = D('Catecompany');
         $this -> coocom = D('Coocom');
         $this -> navcate = D('Navcate');
@@ -20,12 +21,14 @@ class IndexController extends BaseController {
     public function index(){
         $where['status'] = array('neq', 9);
         $res = $this -> nav -> where($where) -> select();
+        $lnav = $this -> lnav -> where($where) -> select();
         foreach ($res as $key => $nav) {
             $numcount = array('nav_id' => array('eq',$nav['id']));
             $res[$key]['compcount'] = $this -> catecompany -> where($numcount) -> count();
             $res[$key]['catecount'] = $this -> navcate -> where($numcount) -> count(); 
         }
         $complist = $this -> coocom-> field('id,logo,href') -> select();
+        $this -> assign('lnavlist',$lnav);
         $this -> assign('navlist',$res);
         $this -> assign('complist',$complist);
         $this -> display();

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/invalid.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="__WEBPUBLIC__/Admin/css/expand.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/facebox.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/jquery.wysiwyg.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/trivial.jquery.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/simpla.jquery.configuration.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Common/kindeditor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Common/kindeditor/lang/zh_CN.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Common/js/kindeditor.js"></script>
+    <script type="text/javascript" src="__WEBPUBLIC__/Admin/js/ajax_operate.js"></script>
+</head>
+<body>
+<!--主页面-->
+<div id="main-content">
+    <div class="content-box">
+        <!--头部切换-->
+        <div class="content-box-header">
+            <h3>文章信息编辑</h3>
+            <div class="clear"></div>
+        </div>
+        <!--表格内容-->
+        <div class="content-box-content">
+            <!--表单 start-->
+            <div class="tab-content default-tab" id="tab1">
+                <form action="{:U('Atical/editAtical')}" method="post" class="form" enctype="multipart/form-data">
+                    <fieldset>
+                        <p>
+                            <input type="hidden" name="id" value="{$cominfo.id}"/>
+                            <span class="label">文章名：</span>
+                            <input class="text-input medium-input" type="text" name="name" value="{$cominfo['name']}"/>
+                        </p>
+                        <p>
+                            <span class="label">文章详情：</span>
+                            <textarea id="text-content" name="desc" style="width:300px;height:300px;visibility:hidden;">{$cominfo['desc']}</textarea>
+                            <br>
+                            <span style="color: red">注意传图不要太大</span>
+                        </p>
+                        <p>
+                            <label>所属分类</label>
+                            <select name="nav_id">
+                                <volist name="list" id="nav">
+                                    <option value="{$nav['id']}" <if condition="$cominfo['nav_id'] eq $nav['id']">checked</if>>{$nav['name']}</option>
+                                </volist>
+                            </select>
+                        </p>
+                        <p>
+                            <input class="button add-btn" type="submit" value="添　加" />
+                        </p>
+                    </fieldset>
+                    <div class="clear"></div>
+                </form>
+            </div>
+            <!--表单 end-->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function ajax(){
+        var filesize = this.files[0].size;
+        if (filesize > 500*1024) {
+            alert("请上传大小在500k以下的图片");
+            return false;
+        };
+        var self = $(this);
+        var files = this.files;
+        var reader = new FileReader();
+        reader.onload = function(e){
+            var src = e.target.result;
+            self.prev().attr("src",src);
+        }
+        reader.readAsDataURL(files[0]);
+    }
+    $("input[type='file']").on('change',ajax);
+</script>
+</html>

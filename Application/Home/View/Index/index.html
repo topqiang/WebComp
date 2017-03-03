@@ -25,6 +25,18 @@
 					</div>
 				</volist>
 
+				<volist name="lnavlist" id="nav">
+					<div class="navitem" linkto="{:U('Home/Cate/catelist',array('id'=>$nav['id'],'navname'=>$nav['name']))}">
+						<div class="imgbag">
+							<img src="{$nav['icon']}"/>
+						</div>
+						<div class="navinfo">
+							<div>{$nav['name']}</div>
+							<span class="colgreen fs10">{$nav['engname']}</span>
+						</div>
+					</div>
+				</volist>
+
 			</div>
 
 			<div class="colwhit ih40 texcen fs14">合作伙伴</div>

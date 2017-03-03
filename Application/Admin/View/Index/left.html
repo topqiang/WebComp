@@ -28,12 +28,19 @@
                     <a class="nav-top-item current">导航管理</a>
                     <ul>
                         <li><a href="{:U('Nav/navList')}" target="main">导航列表</a></li>
+                        <li><a href="{:U('Lnav/navList')}" target="main">资料导航</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#" class="nav-top-item">分类管理</a>
                     <ul>
                         <li><a href="{:U('Cate/cateList')}" target="main">分类列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="nav-top-item">文章列表</a>
+                    <ul>
+                        <li><a href="{:U('Atical/aticalList')}" target="main">文章列表</a></li>
                     </ul>
                 </li>
                 <li>
@@ -63,12 +70,14 @@
                         <li><a href="{:U('WeiXinArticle/backType',array('back_type'=>'noneBack'))}" target="main">空回答回复</a></li>
                     </ul>
                 </li>
+                <!--
                 <li>
                     <a href="#" class="nav-top-item">文章管理</a>
                     <ul>
                         <li><a href="{:U('Article/articleList')}" target="main">文章列表</a></li>
                     </ul>
                 </li>
+                -->
                 <else/>
                 </if>
             </ul>

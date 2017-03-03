@@ -309,6 +309,8 @@ ul.colblu li:before{
 	box-shadow: 0px 0px 11px #999;
 	position: relative;
 	margin-bottom: 20px;
+	display: flex;
+    align-items: center;
 }
 .navlist .navitem:after{
 	position: absolute;
