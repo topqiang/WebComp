@@ -12,24 +12,24 @@
 	<div class="content-box">
 		<!--头部切换-->
 		<div class="content-box-header">
-			<h3>编辑导航</h3>
+			<h3>编辑企业</h3>
 			<div class="clear"></div>
 		</div>
 		<div class="content-box-content">
 			<div class="tab-content default-tab">
-				<form action="{:U('Nav/navEdit',array('id'=>$id))}" method="post" enctype="multipart/form-data">
+				<form action="{:U('Coocom/coocomEdit',array('id'=>$id))}" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<p>
 							<label>导航名称(ID:{$info.gid})</label>
 							<input value="{$info.name}" class="text-input small-input" type="text" id="small-input" name="name" />
 						</p>
 						<p>
-							<label>导航名称(ID:{$info.gid})</label>
-							<input value="{$info.engname}" class="text-input small-input" type="text" id="small-input" name="engname" />
+							<label>链接地址</label>
+							<input value="{$info.href}" class="text-input small-input" type="text" id="small-input" name="href" />
 						</p>
 						<p>
 							<label>图标</label>
-							<img src="__WEBROOT__/{$info.icon}" width="100" height="100"/>
+							<img src="__WEBROOT__/{$info.logo}" width="100" height="100"/>
 							<input type="file" name="pic"/>
 						</p>
 						<p>

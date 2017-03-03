@@ -12,6 +12,7 @@ class IndexController extends BaseController {
 
         $this -> nav = D('Nav');
         $this -> catecompany = D('Catecompany');
+        $this -> coocom = D('Coocom');
         $this -> navcate = D('Navcate');
     	//完善购物车数量查询
     }
@@ -24,7 +25,7 @@ class IndexController extends BaseController {
             $res[$key]['compcount'] = $this -> catecompany -> where($numcount) -> count();
             $res[$key]['catecount'] = $this -> navcate -> where($numcount) -> count(); 
         }
-        $complist = $this -> catecompany-> field('id,logo,url') -> select();
+        $complist = $this -> coocom-> field('id,logo,href') -> select();
         $this -> assign('navlist',$res);
         $this -> assign('complist',$complist);
         $this -> display();

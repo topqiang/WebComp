@@ -49,6 +49,7 @@ class CompanyController extends Controller{
 	        	$res = $this -> upload('profile','pdf');
 	        	if ($res != 'error') {
 	        		$data['protype'] = $res;
+	        		$data['has_pdf'] = 1;
 	        	}
 	        }else{
         		$data['protype'] = $_POST['protype'];
