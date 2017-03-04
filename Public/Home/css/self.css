@@ -423,6 +423,11 @@ ul.colblu li:before{
 .comprig{
 	width: 20px;
 }
+.texovh{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .borb1c{
 	border-bottom: 1px solid #ccc;
 }
