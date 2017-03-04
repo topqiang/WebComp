@@ -33,4 +33,36 @@ class IndexController extends BaseController {
         $this -> assign('complist',$complist);
         $this -> display();
     }
+
+
+    public function filelist(){
+        $id = $_GET['id'];
+        if (isset($id)) {
+            $lnavati = D('Lnavati');
+            
+            $res = $lnavati -> where(array('status' => array('neq',9),'nav_id' => $id)) -> select();
+
+            if (isset( $res )) {
+                $this -> assign( 'atilist' , $res );
+            }
+
+        }
+        $this -> display();
+    }
+
+    public function atiinfo(){
+        $id = $_GET['id'];
+        if (isset($id)) {
+            $lnavati = D('Lnavati');
+            
+            $res = $lnavati -> where(array('status' => array('neq',9),'id' => $id)) -> select();
+
+            if (isset( $res )) {
+                $this -> assign( 'comp' , $res[0] );
+            }
+        }
+
+        $this -> display('Company/ourinfo');
+    }
+
 }
