@@ -29,9 +29,13 @@ class CompanyController extends BaseController{
 	}
 
 	public function company(){
+		
 		$id = $_GET['id'];
+		
 		if ( isset($id) ) {
+			
 			$res = $this->catecompany -> where(array('id'=>$id)) -> select();
+
 			if (isset($res)) {
 				$this -> assign('comp', $res[0]);
 			}
@@ -44,6 +48,7 @@ class CompanyController extends BaseController{
 		$id = $_GET['id'];
 
 		$res = $this -> catecompany -> field('id,name,'.$type) -> where(array('id'=>$id))->select();
+		
 		if (isset($res)) {
 			$this -> assign('comp',$res[0]);
 		}

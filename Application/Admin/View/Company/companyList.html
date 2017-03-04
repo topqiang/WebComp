@@ -30,18 +30,16 @@
                         <!--标题 start-->
                         <thead>
                         <tr>
-                            <th width="5%">ID</th>
+                            <th width="10%">ID</th>
                             <th width="10%">公司名</th>
                             <th width="10%">企业logo</th>
                             <th width="10%">企业公众号</th>
-                            <th width="10%">企业介绍</th>
                             <td width="10%">所属分类</th>
                             <th width="10%">产品选型</th>
-                            <th width="10%">官网地址</th>
-                            <th width="10%">产品视频</th>
+                            <th width="15%">产品视频</th>
                             <th width="10%">电话</th>
-                            <th width="10%">店铺地址</th>
-                            <th width="5%">操作</th>
+                            <th width="15%">店铺地址</th>
+                            <th width="10%">操作</th>
                         </tr>
                         </thead>
                         <!--标题 end-->
@@ -49,38 +47,32 @@
                         <tbody>
                             <volist name="list" id="art">
                                 <tr>
-                                    <td>{$art['id']}</td>
-                                    <td>
+                                    <td width="10%">{$art['id']}</td>
+                                    <td width="10%">
                                         {$art['name']}
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         <img src="__ROOT__/Uploads/{$art['logo']}" style="height:20px;"/>
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         {$art['weix']}
                                     </td>
-                                    <td>
-                                        {$art['desc']}
-                                    </td>
-                                    <td>
+                                    <td width="10%">
                                         {$art['cateName']}
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         {$art['protype']}
                                     </td>
-                                    <td>
-                                        {$art['url']}
-                                    </td>
-                                    <td>
+                                    <td width="15%">
                                         {$art['videosrc']}
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         {$art['tel']}
                                     </td>
-                                    <td>
+                                    <td width="15%">
                                         {$art['shoplink']}
                                     </td>
-                                    <td>
+                                    <td width="10%">
                                         <a href="{:U('Company/editCompany',array('id'=>$art['id']))}" title="编辑">
                                             <img src="__WEBPUBLIC__/Admin/images/icons/pencil.png" width="16" height="18" alt="编辑" />
                                         </a>&nbsp;

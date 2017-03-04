@@ -106,9 +106,12 @@ class CompanyController extends Controller{
 	        if (!empty($_FILES['profile'])) {
 	        	$res = $this -> upload('profile','pdf');
 	        	if ($res != 'error') {
+	        		$data['has_pdf'] = 1;
 	        		$data['protype'] = $res;
 	        	}
-	        }else{
+	        }
+	        if(!empty($_POST['protype']) && ($_POST['haspdf'] == 1)){
+	        	$data['has_pdf'] = 0;
         		$data['protype'] = $_POST['protype'];
         	}
 	        if (!empty($_FILES['videosrc'])) {

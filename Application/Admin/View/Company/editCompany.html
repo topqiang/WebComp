@@ -54,9 +54,9 @@
                         </p>
                         <p>
                             <label>产品选型</label>
-                            <label>无pdf<input type="checkbox" class="haspdf" name="haspdf"></label>
-                            <input class="profile" type="file" name="profile" accept="application/pdf">
-                            <input class="disn profile" type="text" name="protype">
+                            <label>无pdf<input type="checkbox" class="haspdf" name="haspdf" <if condition="$cominfo['has_pdf'] eq 0">checked</if> value="1"/></label>
+                            <input class="<if condition="$cominfo['has_pdf'] eq 0">disn</if> profile" type="file" name="profile" accept="application/pdf">
+                            <input class="<if condition="$cominfo['has_pdf'] eq 1">disn</if> profile" type="text" name="protype" value="{$cominfo['protype']}">
                         </p>
                         <p>
                             <label>所属分类</label>

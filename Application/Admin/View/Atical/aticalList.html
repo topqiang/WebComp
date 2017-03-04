@@ -30,11 +30,10 @@
                         <!--标题 start-->
                         <thead>
                         <tr>
-                            <th width="">ID</th>
-                            <th width="">文章名称</th>
-                            <th width="">文章详情</th>
-                            <td width="">所属分类</th>
-                            <th width="10%">操作</th>
+                            <th width="10%">ID</th>
+                            <th width="30%">文章名称</th>
+                            <td width="30%">所属分类</th>
+                            <th width="30%">操作</th>
                         </tr>
                         </thead>
                         <!--标题 end-->
@@ -42,17 +41,14 @@
                         <tbody>
                             <volist name="list" id="art">
                                 <tr>
-                                    <td>{$art['id']}</td>
-                                    <td>
+                                    <td width="10%">{$art['id']}</td>
+                                    <td width="30%">
                                         {$art['name']}
                                     </td>
-                                    <td>
-                                        {$art['desc']}
-                                    </td>
-                                    <td>
+                                    <td width="30%">
                                         {$art['navname']}
                                     </td>
-                                    <td>
+                                    <td width="30%">
                                         <a href="{:U('Atical/editAtical',array('id'=>$art['id']))}" title="编辑">
                                             <img src="__WEBPUBLIC__/Admin/images/icons/pencil.png" width="16" height="18" alt="编辑" />
                                         </a>&nbsp;
