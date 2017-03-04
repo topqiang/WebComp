@@ -13,7 +13,7 @@
 		
 		<div class="colwhit pore">
 			<img class="" src="__IMG__/filetop.png" style="width:100%;"/>
-			<div class="poab" style="right:10px;bottom:0px;">
+			<div class="poab clicksou" style="right:10px;bottom:0px;">
 				<img src="__IMG__/sou.png" style="width: 50px;">
 			</div>
 		</div>
@@ -32,6 +32,34 @@
 		</div>
 
 	</div>
+
+	<div class="disn texcen" id="sou">
+		<div class="pad20">
+			<div><input name="keywords" type="search" class="keywords" placeholder="请输入关键词"/></div>
+		</div>
+	</div>
 </body>
 </block>
-<block name="footer"></block>
+<block name="footer">
+<script src="__JS__/layer/layer.js"></script>
+
+<script type="text/javascript">
+	$(".clicksou").on('click',function(){
+		layer.open({
+			type:1,
+			title: '搜索',
+			btn: ['搜索'],
+			yes: function () {
+				var keywords = $(".keywords").val();
+				if (keywords) {
+					window.location.href = "{:U('Home/Index/filelist')}&keywords="+keywords;
+				}else{
+					alert("关键词为空！");
+				}
+			},
+			content: $('#sou'),
+			area:["180px","auto"]
+		});  
+	});
+</script>
+</block>

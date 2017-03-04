@@ -22,7 +22,7 @@
 	<div class="content" style="padding: 50px 20px 0px;">
 		
 		<div class="texcen comp fs10 colwhit">
-			<div>
+			<div class="showweix">
 				<div><img src="__IMG__/gongz.png"></div>
 				<div>企业公众号</div>
 			</div>
@@ -31,7 +31,7 @@
 				<img src="Uploads/{$comp['logo']}"/>
 			</div>
 
-			<div>
+			<div class="showshar">
 				<div><img src="__IMG__/fenx.png"></div>
 				<div>分享链接</div>
 			</div>
@@ -44,18 +44,22 @@
 				<div><img src="__IMG__/child1.png"></div>
 				<div>企业介绍</div>
 			</div>
+
 			<div class="bgwhit" <if condition="$comp['has_pdf'] eq 1">linkto="{:U('Company/pdf',array('pdf'=>$comp['protype']))}" <else/> linkto="{:U('Company/ourinfo',array('type'=>'protype','id'=>$comp['id']))}" </if>>
 				<div><img src="__IMG__/child2.png"></div>
 				<div>产品选型</div>
 			</div>
+
 			<div class="bgwhit" linkto="{:U('Company/ourinfo',array('type'=>'videosrc','id'=>$comp['id']))}">
 				<div><img src="__IMG__/child3.png"></div>
 				<div>产品视频</div>
 			</div>
+
 			<div class="disb bgwhit" linkto="tel:{$comp['tel']}">
 				<div><img src="__IMG__/child4.png"></div>
 				<div>联系我们</div>
 			</div>
+
 		</div>
 
 		<a class="texcen colwhit disb" href="{$comp['shoplink']}" target="_blank">
@@ -64,4 +68,24 @@
 	</div>
 </body>
 </block>
-<block name="footer"></block>
+<block name="footer">
+<script src="__JS__/layer/layer.js"></script>
+
+	<script type="text/javascript">
+		var weix = "{$comp['weix']}";
+		if (!weix) {
+			weix = "该企业暂时没有公众号！";
+		}else{
+			weix = "请搜索关注'"+weix+"'吧！";
+		}
+		$(".showweix").on('click',function () {
+
+			layer.msg(weix);
+		});
+
+		$(".showshar").on('click',function () {
+			layer.msg("点击右上角按钮分享吧！");
+		});
+
+	</script>
+</block>

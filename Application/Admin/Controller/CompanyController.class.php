@@ -64,18 +64,20 @@ class CompanyController extends Controller{
 	        }
 	        $data['url'] = $_POST['url'];
 	        $data['tel'] = $_POST['tel'];
+			$data['weix'] = $_POST['weix'];
 	        $data['cate_id'] = $_POST['cate_id'];
 	        $data['shoplink'] = $_POST['shoplink'];
 	        $data['c_time'] = time();
 	        $data['u_time'] = time();
 	        $result = $this->company->add($data);
 	        if($result){
-	            $this->success('添加成功','Company/companyList');
+	            $this->success('添加成功',U('Company/companyList'));
 	        }else{
 	            $this->error('添加失败');
 	        }
 	    }
     }
+
     /**
      * 编辑菜单
      */
@@ -120,12 +122,13 @@ class CompanyController extends Controller{
 	        $data['url'] = $_POST['url'];
 	        $data['id'] = $_POST['id'];
 	        $data['tel'] = $_POST['tel'];
+	        $data['weix'] = $_POST['weix'];
 	        $data['cate_id'] = $_POST['cate_id'];
 	        $data['shoplink'] = $_POST['shoplink'];
 	        $data['u_time'] = time();
 	        $result = $this->company->save($data);
 	        if($result){
-	            $this->success('修改成功','Company/companyList');
+	            $this->success('修改成功',U('Company/companyList'));
 	        }else{
 	            $this->error('修改失败');
 	        }

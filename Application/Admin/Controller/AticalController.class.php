@@ -43,7 +43,7 @@ class AticalController extends Controller{
 	        $data['u_time'] = time();
 	        $result = $this->company->add($data);
 	        if($result){
-	            $this->success('添加成功','Atical/aticalList');
+	            $this->success('添加成功',U('Atical/aticalList'));
 	        }else{
 	            $this->error('添加失败');
 	        }
@@ -71,7 +71,7 @@ class AticalController extends Controller{
 	        $data['u_time'] = time();
 	        $result = $this->company->save($data);
 	        if($result){
-	            $this->success('修改成功','Atical/aticalList');
+	            $this->success('修改成功',U('Atical/aticalList'));
 	        }else{
 	            $this->error('修改失败');
 	        }

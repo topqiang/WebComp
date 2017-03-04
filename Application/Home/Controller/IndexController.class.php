@@ -37,15 +37,22 @@ class IndexController extends BaseController {
 
     public function filelist(){
         $id = $_GET['id'];
+        
+        $keywords = $_GET['keywords'];
+        $lnavati = D('Lnavati');
+
         if (isset($id)) {
-            $lnavati = D('Lnavati');
-            
             $res = $lnavati -> where(array('status' => array('neq',9),'nav_id' => $id)) -> select();
 
             if (isset( $res )) {
                 $this -> assign( 'atilist' , $res );
             }
+        }else{
+            $res = $lnavati -> where(array('status' => array('neq',9),'name' => array('like',"%$keywords%") )) -> select();
 
+            if (isset( $res )) {
+                $this -> assign( 'atilist' , $res );
+            }
         }
         $this -> display();
     }
