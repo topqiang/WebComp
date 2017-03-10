@@ -11,5 +11,13 @@
 <block name="main"></block>
 <script src="__JS__/jquery-1.8.3.js"></script>
 <script src="__JS__/public.js"></script>
+<script type="text/javascript">
+	var str = navigator.userAgent;
+	if (!str.match(/mobile/gi)) {
+		alert("请使用手机查看!");
+		$("body").html("");
+	}
+
+</script>
 <block name="footer"></block>
 </html>
