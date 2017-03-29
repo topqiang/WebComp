@@ -32,9 +32,9 @@
 								<input class="check-all" type="checkbox" />
 								ID
 							</th>
-							<th width="15%">企业名称</th>
-							<th width="15%">logo</th>
-							<th width="20%">链接地址</th>
+							<th width="20%">企业名称</th>
+							<th width="30%">logo</th>
+							<th width="30%">链接地址</th>
 							<th width="10%">操作</th>
 						</tr>
 						</thead>
@@ -54,7 +54,7 @@
 								</td>
 								<td>
 									<img src="{$vo.logo}" height="30" />								</td>
-								<td width="20%">{$vo.href}</td>
+								<td width="20%"><if condition="!empty($vo['href'])"><a href="{$vo.href}">点击查看</a><else/>无</if></td>
                                 <td>
                                     <a href="{:U('Coocom/coocomEdit',array('id'=>$vo['id']))}" title="编辑">
                                         <img src="__WEBPUBLIC__/Admin/images/icons/pencil.png" alt="Edit" />
